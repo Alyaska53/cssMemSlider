@@ -1,11 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
 @keyframes textFlipping {
   0% {
-    transform: translateX(200px);
+    transform: translateY(-30px);
     opacity: 0;
   }
 
   100% {
-    transform: translateX(0);
+    transform: translateY(0);
     opacity: 1;
   }
 }
@@ -19,7 +23,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(45deg, #EECFBA, #C5DDE8);
+  background: linear-gradient(45deg, #eecfba, #c5dde8);
   padding: 0;
   margin: 0;
   min-height: 100vh;
@@ -44,9 +48,9 @@ main {
 .slider-img-container {
   width: 100%;
   max-height: 644px;
-  border: 5px solid #3b3b3b;
+  border: 3px solid #3b3b3b;
   border-radius: 10px;
-  background-color: #fff;
+  background-color: #000000;
   overflow: hidden;
 }
 
@@ -64,7 +68,7 @@ main {
   display: flex;
   align-items: center;
   animation-duration: 0.3s;
-  animation-timing-function: linear;
+  animation-timing-function: ease-in;
   background-color: #000000;
 }
 
@@ -78,80 +82,69 @@ input {
   display: none;
 }
 
-.label:active .button {
-  background-color: #ff0000;
+.slider-info-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
-input:active + .slider-info-container .dots-container .label .button {
-  background-color: #ff0000!important;
+.slider-description {
+  display: flex;
+}
+
+.slider-text {
+  display: none;
+  margin: 0;
+  font-size: 1.8rem;
+  animation: textFlipping 0.3s ease-in;
+}
+
+.dots-container {
+  display: flex;
 }
 
 .dot1:checked ~ .slider-img-container .slider-img-content {
   transform: translateY(0);
 }
 
-.dot1:checked ~ .slider-img-container .slider-img-content .slider-item:nth-child(1) {
-  animation-name: imgFlipping;
-}
-
-.dot1:checked ~ .mems__container .one__mem:nth-child(1) {
-  display: block !important;
-}
-
 .dot2:checked ~ .slider-img-container .slider-img-content {
   transform: translateY(-644px);
-}
-
-.dot2:checked ~ .slider-img-container .slider-img-content .slider-item:nth-child(2) {
-  animation-name: imgFlipping;
-}
-
-.dot2:checked ~ .mems__container .one__mem:nth-child(2) {
-  display: block !important;
 }
 
 .dot3:checked ~ .slider-img-container .slider-img-content {
   transform: translateY(-1288px);
 }
 
-.dot3:checked ~ .slider-img-container .slider-img-content .slider-item:nth-child(3) {
-  animation-name: imgFlipping;
-}
-
-.dot3:checked ~ .mems__container .one__mem:nth-child(3) {
-  display: block !important;
-}
-
 .dot4:checked ~ .slider-img-container .slider-img-content {
   transform: translateY(-1932px);
-}
-
-.dot4:checked ~ .slider-img-container .slider-img-content .slider-item:nth-child(4) {
-  animation-name: imgFlipping;
-}
-
-.dot4:checked ~ .mems__container .one__mem:nth-child(4) {
-  display: block !important;
 }
 
 .dot5:checked ~ .slider-img-container .slider-img-content {
   transform: translateY(-2576px);
 }
 
-.dot5:checked ~ .slider-img-container .slider-img-content .slider-item:nth-child(5) {
-  animation-name: imgFlipping;
+.dot1:checked ~ .slider-info-container .slider-description .slider-text:nth-child(1),
+.dot2:checked ~ .slider-info-container .slider-description .slider-text:nth-child(2),
+.dot3:checked ~ .slider-info-container .slider-description .slider-text:nth-child(3),
+.dot4:checked ~ .slider-info-container .slider-description .slider-text:nth-child(4),
+.dot5:checked ~ .slider-info-container .slider-description .slider-text:nth-child(5) {
+  display: block !important;
 }
 
-.dot5:checked ~ .mems__container .one__mem:nth-child(5) {
-  display: block !important;
+.dot1:checked ~ .slider-info-container .dots-container .label1 .button,
+.dot2:checked ~ .slider-info-container .dots-container .label2 .button,
+.dot3:checked ~ .slider-info-container .dots-container .label3 .button,
+.dot4:checked ~ .slider-info-container .dots-container .label4 .button,
+.dot5:checked ~ .slider-info-container .dots-container .label5 .button {
+  background-color: transparent;
 }
 
 .label {
   display: flex;
-  width: 8vw;
-  height: 8vw;
-  max-width: 100px;
-  max-height: 100px;
+  width: 4vw;
+  height: 4vw;
+  max-width: 50px;
+  max-height: 50px;
   border-radius: 50%;
   background-color: transparent;
   cursor: pointer;
@@ -161,14 +154,19 @@ input:active + .slider-info-container .dots-container .label .button {
   display: block;
   width: 50%;
   height: 50%;
+  min-width: 25px;
+  min-height: 25px;
   margin: auto;
-  border: 2px solid #290075;
+  border: 3px solid #3b3b3b;
   border-radius: 50%;
-  background-color: transparent;
+  background-color: #3b3b3b;
   transition: background-color 0.3s;
 }
 
 .label:hover .button {
-  background-color: #3286aa;
+  background-color: #aed3e4;
 }
 
+.label:active .button {
+  background-color: #aed3e4 !important;
+}
